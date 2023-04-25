@@ -65,10 +65,6 @@ export default function Store({ products, categories }) {
                   width={350}
                   height={100}
                   placeholder="blur"
-                  style={{
-                    maxWidth: '100%',
-                    height: 'auto',
-                  }}
                 />
                 <div className="flex justify-between">
                   <span>{pro.name} </span>
