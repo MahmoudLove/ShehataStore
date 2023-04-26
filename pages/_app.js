@@ -5,12 +5,10 @@ import '@/styles/globals.css';
 import { CartProvider } from 'react-use-cart';
 export default function App({ Component, pageProps }) {
   return (
-    <div>
-      <CartProvider>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-      </CartProvider>
-    </div>
+    <CartProvider>
+      <Header />
+      <Component {...pageProps} />
+      <Footer />
+    </CartProvider>
   );
 }

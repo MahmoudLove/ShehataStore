@@ -8,7 +8,9 @@
 // import CategoriesModel from '@/DB/models/categoriesModel';
 // export default function Store({ products, categories }) {
 //   const [selectedCategories, setSelectedCategories] = useState([]);
-
+export default function Store() {
+  return <div>Store</div>;
+}
 //   const handleCategoryChange = (e) => {
 //     if (e.target.checked) {
 //       setSelectedCategories([...selectedCategories, e.target.id]);
@@ -102,7 +104,7 @@
 
 //   let products = await ProductsModel.find();
 //   const proData = products.map((pro) => {
-//     // const id = `${pro._id}`;
+//     const id = `${pro._id}`;
 //     return {
 //       name: pro.name,
 //       price: pro.price,
@@ -112,7 +114,7 @@
 //       productImage: pro.productImage || 'hi',
 //       slug: pro.slug,
 //       nameSlug: pro.nameSlug,
-//       // id,
+//       id,
 //     };
 //   });
 //   let categories = await CategoriesModel.find();
