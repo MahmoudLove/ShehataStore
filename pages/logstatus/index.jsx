@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 import { FaEye, FaEyeSlash, FaSpinner } from 'react-icons/fa';
-import axios from 'axios';
 import { setCookie, getCookie } from 'cookies-next';
 
 export default function LogStatePage() {
