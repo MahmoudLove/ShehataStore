@@ -33,6 +33,7 @@ export default function LogStatePage() {
         maxAge: 60 * 60 * 24 * 7 * 12,
         path: '/',
       });
+      router.reload();
       return;
     }
 
