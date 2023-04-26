@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getCookie } from 'cookies-next';
-import axios from 'axios';
 import { useCart } from 'react-use-cart';
 import { BsFillCartFill } from 'react-icons/bs';
 export default function Header() {

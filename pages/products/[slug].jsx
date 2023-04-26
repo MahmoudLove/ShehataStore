@@ -14,14 +14,14 @@ import { dbConnect } from '@/utils/DB';
 export default function ProductPage({ product }) {
   const variants = ['10Ml', 'Red', 'Blue'];
   const [variant, setVariant] = useState();
-  const { addItem, inCart, updateItemQuantity, items, emptyCart } = useCart();
+  const { addItem, inCart, updateItemQuantity } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [modalState, setModalState] = useState(false);
   const [price, setPrice] = useState(product.price);
   product.priceDiscount = 10;
 
   const addToCart = () => {
-    if (!variant) setVariant(variant[1]);
+    if (!variant) setVariant(variants[1]);
     if (variant) {
       const cartId = `${product.name}${variant}`;
       if (inCart(cartId)) {
@@ -57,6 +57,12 @@ export default function ProductPage({ product }) {
           className="w-[80%] inline-block"
           src="/test.png"
           alt={product.name}
+          placeholder="blur"
+          blurDataURL="data:image/webp;base64,UklGRlIDAABXRUJQVlA4WAoAAAAgAAAAiAAAiAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggZAEAALANAJ0BKokAiQA+7WSoTbo0qKYul8y7QB2JZ27gOEjf0R59QeYkPwbIEq79OvQEcy8pi/sXSEbyFER9oGR4E71U1lySnyMNRThCD+Ci+mYwOywxjbAaBaKxf1AlecN/1KX7cUlxtl35P6/1/lak5vcAxb99MBgA/vDQ0qoNh4QigGbZIMX3uRDXuwLn6c/7SEOqqvMBUWhkGmLj2z2gopn++l6DAZF1MXos/vYZi9VkE1xkEhiT5s7P5xLcM+RG/bS3LafvQ/zNnUlbmTGpMGSJFOnPTCcFm3Hoa65bQRTYuaefz+tS07j1OWVR1V2oCnSeSjQXY0Zt2MMpRy0IiPQllebUWNx9egyZxNgSi8H2fgOGzFc0VbYl39KCqHV7bq+t+DZmHbhxlXEkVZTODhwnS5G9Feha/aVrx2Gmg58u7ujqV1pRWObntTUB7rS1dMmM+E838QJa0YcyDQd8AEd4W0AA"
+          style={{
+            width: 'auto',
+            height: 'auto',
+          }}
         />
       </div>
       <h2 className="font-bold tezt-2xl text-center">{product.name}</h2>
@@ -123,6 +129,7 @@ export const getStaticPaths = async () => {
   let paths = [];
   let products = await ProductsModel.find();
   if (products) {
+    console.log('found');
     paths = [
       ...paths,
       ...products.map((product) => ({
